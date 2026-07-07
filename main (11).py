@@ -490,7 +490,7 @@ def admin_lookup_pay_history_by_username(message):
         f"👤 User: @{target_uname}\n"
         f"*𝗖𝘂𝗿𝗿𝗲𝗻𝘁 𝗪𝗮𝗹𝗹𝗲𝘁:* ${t_bal:.2f}\n"
         f"━━━━━━━━━━━━━━━━━━━━━━\n"
-        f"📊 *Balance use metrics trace lines:*\n"
+        f"📊 *𝐁𝐚𝐥𝐚𝐧𝐜𝐞 𝐇𝐢𝐬𝐭𝐨𝐫𝐲*\n"
     )
     
     if not usage_records:
@@ -535,7 +535,7 @@ def process_admin_remove_balance(message):
 def process_admin_broadcast_alert(message):
     users = run_query("SELECT user_id FROM users", is_select=True)
     for u in users:
-        try: bot.send_message(u[0], f"📢 *𝐀𝐝𝐦𝐢𝐧 𝐍𝐨𝐭𝐢𝐟𝐢𝐜𝐚𝐭𝐢𝐨𝐧 <b>𝐔𝐩𝐝𝐚𝐭𝐞:</b>*\n\n{message.text}")
+        try: bot.send_message(u[0], f"📢 *𝐀𝐝𝐦𝐢𝐧 𝐍𝐨𝐭𝐢𝐟𝐢𝐜𝐚𝐭𝐢𝐨𝐧 𝐔𝐩𝐝𝐚𝐭𝐞:*\n\n{message.text}")
         except Exception: pass
     bot.send_message(message.chat.id, "✅ Global alert message dispatched.")
 
