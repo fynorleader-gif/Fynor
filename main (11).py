@@ -716,10 +716,10 @@ def run_s1(call):
     user_id = call.message.chat.id
     error_text = (
         "🩷 𝐒𝐨𝐫𝐫𝐲 \n━━━━━━━━━━━━━━━━━━━━━━━\n"
-        "𝗔𝗯𝗵𝗶 𝗶𝘀 𝗦𝗲𝗿𝘃𝗶𝗰е 𝗸𝘆 𝗡𝘂𝗺бе𝗿 𝗸𝗮 𝗦𝘁𝗼𝗰𝗸 𝗞𝗵𝗮𝘁𝘁𝗮𝗺 𝗵ο 𝗚𝘆𝗮 𝗵𝗮𝗶  🌶️\n\n"
+        "𝗔𝗯𝗵𝗶 𝗶𝘀 𝐒𝐞𝐫𝐯𝐢𝐜𝐞 𝗸𝘆 𝐍𝐮𝐦𝐛𝐞𝐫 𝗸𝗮 𝗦𝘁𝗼𝗰𝗸 𝗞𝗵𝗮𝘁𝘁𝗮𝗺 𝐡𝐨 𝗚𝘆𝗮 𝗵𝗮𝗶  🌶️\n\n"
         "🔄 𝐓𝐡𝐨𝐫𝐢 𝐃𝐞𝐞𝐫 𝐭𝐚𝐤 𝐇𝐮𝐦 𝐚𝐮𝐫 𝐍𝐮𝐦𝐛𝐞𝐫 𝐚𝐝𝐝 𝐤𝐚𝐫 𝐝𝐞 𝐆𝐚 \n\n"
-        "𝗔𝗻𝘆 𝗜𝘀𝘀𝘂е 𝗖𝗼𝗻𝘁𝗮𝗰𝘁 = @ZyroSMS\n━━━━━━━━━━━━━━━━━━━━━━━\n"
-        "🩷 𝐓𝐡𝐚𝐧𝐤 𝐬𝐟𝐨𝐫  𝐜𝐡𝐨𝐨𝐬𝐢𝐧𝐠 𝐅𝐲𝐧𝐨𝐫 𝐒𝐞𝐫𝐯𝐢𝐜𝐞𝐬 !"
+        "𝗔𝗻𝘆 𝐈𝐬𝐬𝐮𝐞 𝗖𝗼𝗻𝘁𝗮𝗰𝘁 = @ZyroSMS\n━━━━━━━━━━━━━━━━━━━━━━━\n"
+        "🩷 𝐓𝐡𝐚𝐧𝐤𝐬 𝐟𝐨𝐫  𝐜𝐡𝐨𝐨𝐬𝐢𝐧𝐠 𝐙𝐲𝐫𝐨𝐒𝐌𝐒 !"
     )
     
     price_res = run_query("SELECT price_usd FROM service_countries WHERE service_code = ? AND country_code = ?", (app_code, country_code), is_select=True, fetch_all=False)
@@ -791,10 +791,10 @@ def poll_s1(user_id, message_id, activation_id, phone_number, app_name, cost):
                     user_info = bot.get_chat(user_id)
                     u_name = f"@{user_info.username}" if user_info.username else f"User [{user_id}]"
                     group_design = (
-                        "💪🏻 𝐎𝐓𝐏 𝐑block𝐞𝐢𝐯𝐞𝐝\n━━━━━━━━━━━━━━━━━━━━━━\n\n"
+                        "💪🏻 𝐎𝐓𝐏 𝐑𝐞𝐜𝐞𝐢𝐯𝐞𝐝\n━━━━━━━━━━━━━━━━━━━━━━\n\n"
                         f"💪🏻 𝐒e𝐫𝐯𝐢𝐜𝐞 = {app_name}\n🌍 𝐂𝐨𝐮𝐧𝐭𝐫𝐲 = Server 1 🏳️\n👤 𝐔𝐬𝐞𝐫 = {u_name}\n\n"
                         "━━━━━━━━━━━━━━━━━━━━━━\n\n🧾 𝐍𝐮𝐦𝐛𝐞𝐫 = `+{phone_number}`\n\n━━━━━━━━━━━━━━━━━━━━━━\n\n🔐 𝐎𝐓𝐏 = `{otp_code}`\n\n"
-                        "━━━━━━━━━━━━━━━━━━━━━━\n🩷 𝐓𝐡𝐚𝐧𝐤 𝐲𝐨𝐮 𝐟𝐨𝐫 𝐜𝐡𝐨𝐨𝐬𝐢𝐧𝐠 𝐙𝐲𝐫𝐨𝐒𝐌𝐒"
+                        "━━━━━━━━━━━━━━━━━━━━━━\n🩷 𝐓𝐡𝐚𝐧𝐤𝐬 𝐲𝐨𝐮 𝐟𝐨𝐫 𝐜𝐡𝐨𝐨𝐬𝐢𝐧𝐠 𝐙𝐲𝐫𝐨𝐒𝐌𝐒"
                     )
                     bot.send_message("@ZyroOtps", group_design, parse_mode="Markdown")
                 except Exception: pass
@@ -843,10 +843,10 @@ def run_s2(call):
     user_id = call.message.chat.id
     error_text = (
         "🩷 𝐒𝐨𝐫𝐫𝐲 \n━━━━━━━━━━━━━━━━━━━━━━━\n"
-        "𝗔𝗯𝗵𝗶 𝗶𝘀 𝗦𝗲𝗿𝘃𝗶𝗰𝗲 𝗸𝘆 𝗡𝘂𝗺бе𝗿 𝗸𝗮 𝗦𝘁𝗼𝗰𝗸 𝗞𝗵𝗮𝘁𝘁𝗮𝗺 𝗵ο 𝗚𝘆𝗮 𝗵𝗮 hai  🌶️\n\n"
+        "𝗔𝗯𝗵𝗶 𝗶𝘀 𝗦𝗲𝗿𝘃𝗶𝗰𝗲 𝗸𝘆 𝐍𝐮𝐦𝐛𝐞𝐫 𝗸𝗮 𝗦𝘁𝗼𝗰𝗸 𝗞𝗵𝗮𝘁𝘁𝗮𝗺 𝐡𝐨 𝗚𝘆𝗮 𝗵𝗮 𝗵𝗮𝗶 🌶️\n\n"
         "🔄 𝐓𝐡𝐨𝐫𝐢 𝐃𝐞𝐞𝐫 𝐭𝐚𝐤 𝐇𝐮𝐦 𝐚𝐮𝐫 𝐍𝐮𝐦𝐛𝐞𝐫 𝐚𝐝𝐝 𝐤𝐚𝐫 𝐝𝐞 𝐆𝐚 \n\n"
-        "𝗔𝗻𝘆 𝗜𝘀𝘀𝘂е 𝗖𝗼𝗻𝘁𝗮𝗰𝘁 = @ZyroSMS\n━━━━━━━━━━━━━━━━━━━━━━━\n"
-        "🩷 𝐓𝐡𝐚𝐧𝐤 𝐬𝐟𝐨𝐫  𝐜𝐡𝐨𝐨𝐬𝐢𝐧𝐠 𝐅𝐲𝐧𝐨𝐫 𝐒𝐞𝐫𝐯𝐢𝐜𝐞𝐬 !"
+        "𝗔𝗻𝘆 𝐈𝐬𝐬𝐮𝐞 𝗖𝗼𝗻𝘁𝗮𝗰𝘁 = @ZyroSMS\n━━━━━━━━━━━━━━━━━━━━━━━\n"
+        "🩷 𝐓𝐡𝐚𝐧𝐤𝐬 𝐟𝐨𝐫  𝐜𝐡𝐨𝐨𝐬𝐢𝐧𝐠 𝐙𝐲𝐫𝐨𝐒𝐌𝐒 !"
     )
     
     price_res = run_query("SELECT price_usd FROM service_countries WHERE service_code = ? AND country_code = ?", (app_code, country_code), is_select=True, fetch_all=False)
