@@ -859,7 +859,7 @@ def run_s2(call):
         bal_res = run_query("SELECT balance FROM users WHERE user_id = ?", (user_id,), is_select=True, fetch_all=False)
         balance = bal_res[0] if bal_res else 0.0
         if balance < cost:
-            bot.send_message(user_id, f"♎  𝐋𝐨𝐰 𝐰𝐚𝐥𝐥𝐞𝐭 𝐛𝐚𝐥𝐚𝐧𝐜𝐞! 𝐏𝐫𝐢𝐜𝐞 𝐫e𝐪𝐮𝐢𝐫e𝐝: ${cost:.2f}")
+            bot.send_message(user_id, f"♎  𝐋𝐨𝐰 𝐰𝐚𝐥𝐥𝐞𝐭 𝐛𝐚𝐥𝐚𝐧𝐜𝐞! 𝐏𝐫𝐢𝐜𝐞 𝐑𝐞𝐪𝐮𝐢𝐫𝐞𝐝: ${cost:.2f}")
             return
         
     api_res = run_query("SELECT api_code, name FROM services WHERE code = ?", (app_code,), is_select=True, fetch_all=False)
@@ -940,7 +940,7 @@ def poll_s2(user_id, message_id, activation_id, phone_number, app_name, cost):
                     run_query("UPDATE users SET balance = MAX(0.0, balance - ?), total_spent = total_spent + ? WHERE user_id = ?", (cost, cost, user_id))
                 
                 run_query("INSERT INTO history (user_id, service, number, otp, server, cost) VALUES (?, ?, ?, ?, 'Server 2', ?)", (user_id, app_name, phone_number, otp_code, cost))
-                text = f"🌡️ 𝐎𝐓𝐏 𝐑e𝐜e𝐢𝐯e𝐝\n\nService : {app_name}\n━━━━━━━━━━━━━━━━━━━━━━\n🧾 𝐍𝐮𝐦𝐛𝐞𝐫\n\n`+{phone_number}`\n\n━━━━━━━━━━━━━━━━━━━━━━\n🔐 OTP\n\n`{otp_code}`"
+                text = f"🌡️ 𝐎𝐓𝐏 𝐑𝐞𝐜𝐞𝐢𝐯𝐞𝐝\n\nService : {app_name}\n━━━━━━━━━━━━━━━━━━━━━━\n🧾 𝐍𝐮𝐦𝐛𝐞𝐫\n\n`+{phone_number}`\n\n━━━━━━━━━━━━━━━━━━━━━━\n🔐 𝐎𝐓𝐏\n\n`{otp_code}`"
                 markup = InlineKeyboardMarkup(row_width=1)
                 markup.add(
                     InlineKeyboardButton("📋 Copy OTP", copy_text=CopyTextButton(text=otp_code)), 
@@ -952,7 +952,7 @@ def poll_s2(user_id, message_id, activation_id, phone_number, app_name, cost):
                     user_info = bot.get_chat(user_id)
                     u_name = f"@{user_info.username}" if user_info.username else f"User [{user_id}]"
                     group_design = (
-                        "🌡️ 𝐎𝐓𝐏 𝐑𝐞𝐜𝐞𝐢𝐯𝐞舊\n━━━━━━━━━━━━━━━━━━━━━━\n\n"
+                        "🌡️ 𝐎𝐓𝐏 𝐑𝐞𝐜𝐞𝐢𝐯𝐞\n━━━━━━━━━━━━━━━━━━━━━━\n\n"
                         f"🌡️ 𝐒e𝐫𝐯𝐢𝐜𝐞 = {app_name}\n🌍 𝐂𝐨𝐮𝐧𝐭𝐫𝐲 = Server 2 🏳️\n👤 𝐔𝐬𝐞𝐫 = {u_name}\n\n"
                         "━━━━━━━━━━━━━━━━━━━━━━\n\n🧾 𝐍𝐮𝐦𝐛𝐞𝐫 = `+{phone_number}`\n\n━━━━━━━━━━━━━━━━━━━━━━\n\n🔐 𝐎𝐓𝐏 = `{otp_code}`\n\n"
                         "━━━━━━━━━━━━━━━━━━━━━━\n🩷 𝐓𝐡𝐚𝐧𝐤 𝐲𝐨𝐮 𝐟𝐨𝐫 𝐜𝐡𝐨𝐨𝐬𝐢𝐧𝐠 𝐙𝐲𝐫ο𝐒𝐌𝐒"
@@ -1003,7 +1003,7 @@ def again_s2(call):
 def user_balance_panel_msg(uid):
     res = run_query("SELECT balance, total_deposited, total_spent FROM users WHERE user_id = ?", (uid,), is_select=True, fetch_all=False)
     current_bal, total_dep, spent = res if res else (0.0, 0.0, 0.0)
-    text = f"💳 *𝐘𝐨𝐮𝐫 𝐁𝐚𝐥𝐚𝐧𝐜𝐞*\n━━━━━━━━━━━━━━━━━━━━━━\n\n💰 *𝗧𝗼𝘁𝗮𝗹 𝗗𝗲𝗽𝗼𝘀𝗶𝘁𝗲𝗱:* ${total_dep:.2f}\n📉 *𝗧𝗼𝘁𝗮𝗹 𝗦𝗽𝗲𝗻𝘁:* ${spent:.2f}\n💵 *𝗖𝘂𝗿𝗿𝗲𝗻𝘁 𝗪𝗮𝗹𝗹𝗲𝘁:* ${current_bal:.2f}\n━━━━━━━━━━━━━━━━━━━━━━"
+    text = f"💳 *𝐘𝐨𝐮𝐫 𝐁𝐚𝐥𝐚𝐧𝐜𝐞*\n━━━━━━━━━━━━━━━━━━━━━━\n\n💵 *𝗖𝘂𝗿𝗿𝗲𝗻𝘁 𝗪𝗮𝗹𝗹𝗲𝘁:* ${current_bal:.2f}\n📉 *𝗧𝗼𝘁𝗮𝗹 𝗦𝗽𝗲𝗻𝘁:* ${spent:.2f}\n━━━━━━━━━━━━━━━━━━━━━━"
     markup = InlineKeyboardMarkup(row_width=1)
     markup.add(
         InlineKeyboardButton("♎ Add Balance", callback_data="add_balance_direct_methods"),
@@ -1072,7 +1072,7 @@ def collect_payment_screenshot(message, gateway):
     ticket_id = str(int(time.time() * 100))
     payment_temp_cache[ticket_id] = {"user_id": uid, "username": username, "gateway": gateway, "file_id": file_id}
     
-    bot.send_message(uid, "⏳ 𝐘𝐨𝐮𝐫 𝐩𝐚𝐲𝐦𝐞𝐧𝐭 𝐢𝐬 𝐮𝐧𝐝𝐞𝐫 𝐫e𝐯𝐢𝐞𝐰. 𝐏λe𝐚𝐬e 𝐰𝐚𝐢𝐭.")
+    bot.send_message(uid, "⏳ 𝐘𝐨𝐮𝐫 𝐩𝐚𝐲𝐦𝐞𝐧𝐭 𝐢𝐬 𝐮𝐧𝐝𝐞𝐫 𝐫𝐞𝐯𝐢𝐞𝐰. 𝐏𝐥𝐞𝐚𝐬𝐞 𝐰𝐚𝐢𝐭.")
     grp_text = f"User id: <code>{uid}</code>\nUser name: @{username}\nGateway: {gateway.upper()}"
     
     markup = InlineKeyboardMarkup(row_width=2)
@@ -1123,7 +1123,7 @@ def group_finalizes_credit_load(message, ticket_id):
         ensure_user(target_uid)
         
         run_query("UPDATE users SET balance = balance + ?, total_deposited = total_deposited + ? WHERE user_id = ?", (final_credit, final_credit, target_uid))
-        success_receipt = f"💳 *𝐏𝐚𝐲𝐦𝐞𝐧𝐭 𝐒𝐮𝐜𝐜𝐞𝐬𝐬𝐟𝐮𝐥𝐲 𝐀𝐝𝐝𝐞added*\n━━━━━━━━━━━━━━━━━━━━━━\n\n𝗬𝗼𝘂𝗿 𝗣𝗮𝘆𝗺𝗲𝗻𝘁 𝗵𝗮𝘀 𝗯𝗲𝗲𝗻 𝗩𝗲𝗿𝗶𝗳𝗶𝗲𝗱 𝗦𝘂𝗰𝗰𝗲𝘀𝘀𝗳𝘂𝗹𝗹𝘆 ✅\n\nAdded Balance Amount = *${final_credit:.2f}*\n\n🩷 𝐓𝐡𝐚𝐧𝐤 𝐲𝐨𝐮 𝐟𝐨𝐫 𝐜𝐡𝐨𝐨𝐬𝐢𝐧𝐠 𝐙𝐲𝐫𝐨𝐒𝐌𝐒 !\n━━━━━━━━━━━━━━━━━━━━━━"
+        success_receipt = f"💳 *𝐏𝐚𝐲𝐦𝐞𝐧𝐭 𝐒𝐮𝐜𝐜𝐞𝐬𝐬𝐟𝐮𝐥𝐲 𝐀𝐝𝐝𝐞𝐝*\n━━━━━━━━━━━━━━━━━━━━━━\n\n𝗬𝗼𝘂𝗿 𝗣𝗮𝘆𝗺𝗲𝗻𝘁 𝗵𝗮𝘀 𝗯𝗲𝗲𝗻 𝗩𝗲𝗿𝗶𝗳𝗶𝗲𝗱 𝗦𝘂𝗰𝗰𝗲𝘀𝘀𝗳𝘂𝗹𝗹𝘆 ✅\n\nAdded Balance Amount = *${final_credit:.2f}*\n\n🩷 𝐓𝐡𝐚𝐧𝐤 𝐲𝐨𝐮 𝐟𝐨𝐫 𝐜𝐡𝐨𝐨𝐬𝐢𝐧𝐠 𝐙𝐲𝐫𝐨𝐒𝐌𝐒 !\n━━━━━━━━━━━━━━━━━━━━━━"
         
         bot.send_message(target_uid, success_receipt, parse_mode="Markdown")
         bot.send_message(PAYMENT_GROUP_CHAT_ID, f"✅ Successfully authorized and added <b>${final_credit:.2f}</b> balance to user @{ticket['username']}.", parse_mode="HTML")
